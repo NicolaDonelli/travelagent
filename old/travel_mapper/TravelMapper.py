@@ -1,13 +1,13 @@
-from travel_mapper.agent.Agent import Agent
-from travel_mapper.routing.RouteFinder import RouteFinder
-from travel_mapper.user_interface.utils import (
+from .agent.Agent import Agent
+from .routing.RouteFinder import RouteFinder
+from .user_interface.utils import (
     generate_leafmap,
     validation_message,
     generate_generic_leafmap,
 )
 from dotenv import load_dotenv
 from pathlib import Path
-from travel_mapper.user_interface.constants import VALID_MESSAGE
+from .user_interface.constants import VALID_MESSAGE
 import os
 
 

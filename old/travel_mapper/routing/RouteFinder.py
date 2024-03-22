@@ -1,4 +1,4 @@
-from travel_mapper.mapping.RouteMapper import RouteMapper
+from ..mapping.RouteMapper import RouteMapper
 from googlemaps.convert import decode_polyline
 import googlemaps
 from datetime import datetime

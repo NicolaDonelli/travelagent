@@ -1,12 +1,12 @@
 from langchain.chains import LLMChain, SequentialChain
 from langchain.chat_models import ChatOpenAI
 from langchain.llms import GooglePalm
-from travel_mapper.agent.templates import (
+from .templates import (
     ValidationTemplate,
     ItineraryTemplate,
     MappingTemplate,
 )
-from travel_mapper.constants import MODEL_NAME, TEMPERATURE
+from ..constants import MODEL_NAME, TEMPERATURE
 import openai
 import logging
 import time

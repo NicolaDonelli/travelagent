@@ -1,0 +1,58 @@
+version: 2.1
+
+executors:
+  python-container:
+    docker:
+      # using buster images instead of slim-buster since we need libpq-dev, make, gcc and git
+      - image: python:3.10-buster
+
+jobs:
+  check:
+    parameters:
+      env:
+        type: string
+    executor: python-container
+    environment:
+      GIT_LFS_SKIP_SMUDGE: 1
+      IMAGE: travelagent
+    steps:
+      - checkout
+      - run:
+          name: Install git lfs
+          command: |
+            apt-get update && apt-get install -y git-lfs
+            git lfs install
+
+      - run:
+          name: Compute cache key
+          command: |
+            git lfs ls-files -l | cut -d' ' -f1 | sort > .assets-id
+
+      - restore_cache:
+          key: v1-$IMAGE-{{ checksum ".assets-id" }}
+
+      - run:
+          name: Pull lfs
+          command: |
+            git lfs pull
+
+      - save_cache:
+          key: v1-$IMAGE-{{ checksum ".assets-id" }}
+          paths:
+            - .git/lfs
+
+      - run:
+          environment:
+            ENV: << parameters.env >>
+            PROJECT_DIR: "/root/project"
+          command: make checks
+
+workflows:
+  version: 2
+  CI:
+    jobs:
+      - check:
+          name: "check"
+          matrix:
+            parameters:
+              env: [ integration ]

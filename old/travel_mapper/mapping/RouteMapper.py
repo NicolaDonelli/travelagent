@@ -1,7 +1,7 @@
 from datetime import datetime
 import folium
 from branca.element import Figure
-from travel_mapper.constants import MAPS_DUMP_DIR
+from ..constants import MAPS_DUMP_DIR
 import logging
 import os
 

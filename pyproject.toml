@@ -1,0 +1,132 @@
+[build-system]
+requires = ["setuptools>=61.2", "setuptools_scm[toml]>=7.1"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "travelagent"
+authors = [
+    {name = "Aramix s.r.l.", email = "datascience-dev@aramix.ai"}
+]
+description = ""
+classifiers = [
+    "Programming Language :: Python :: 3",
+    "License :: OSI Approved :: MIT License",
+    "Operating System :: OS Independent",
+]
+license = {text = "MIT"}
+requires-python = "~=3.10"
+dynamic = ["version", "dependencies", "optional-dependencies"]
+
+[project.readme]
+file = "README.md"
+content-type = "text/markdown"
+
+[project.urls]
+Homepage = " https://github.com/NicolaDonelli/travelagent.git"
+
+[tool.coverage.report]
+fail_under = 75
+show_missing = true
+skip_covered = true
+
+[tool.coverage.run]
+branch = true
+omit = [
+    "travelagent/__init__.py",
+]
+
+[tool.setuptools]
+zip-safe = false
+include-package-data = true
+license-files = ["LICENSE"]
+
+[tool.setuptools.package-data]
+travelagent = ["travelagent/py.typed"]
+
+[tool.setuptools.packages.find]
+exclude = [
+    "tests*",
+    "build*",
+    "dist*",
+    "sphinx*",
+    "docs*",
+    "terraform*",
+    "bin*",
+    "dev*",
+]
+namespaces = true
+
+[tool.setuptools.dynamic.dependencies]
+file = ['requirements/requirements.in']
+
+[tool.setuptools.dynamic.optional-dependencies]
+dev = {file = ['requirements/requirements_dev.in']}
+google = {file = ['requirements/requirements_google.in']}
+hf = {file = ['requirements/requirements_hf.in']}
+
+[tool.setuptools_scm]
+version_scheme = "no-guess-dev"
+local_scheme = "node-and-date"
+tag_regex = "^v(?P<version>\\d+\\.\\d+\\.\\d+)((\\.post(?P<post>\\d+))?)((\\.dev(?P<distance>\\d+))?)(\\+g(?P<node>.*))?$"
+
+[tool.pytest.ini_options]
+addopts = "--doctest-modules --cov=./travelagent"
+testpaths = "tests"
+
+[tool.flake8]
+per-file-ignores = [
+    '__init__.py:F401',
+    'tests/*: D',
+]
+ignore = [
+# Ignored by black
+'E203', 'E266', 'E501', 'W503',
+# Ignored to conform to PEP257
+'D203', 'D212', 'D213', 'D214', 'D215', 'D404', 'D405', 'D406', 'D407', 'D408', 'D409', 'D410', 'D411', 'D413', 'D415', 'D416', 'D417',
+# Ignored to work with Sphinx
+'RST303', 'RST304', 'RST307']
+# line length is intentionally set to 80 here because black uses Bugbear
+# See https://black.readthedocs.io/en/stable/the_black_code_style/current_style.html#line-length for more details
+max-line-length = "88"
+max-complexity = "18"
+select = ['B','C','D','E','F','W','T4','B9','RST','DAR']
+docstring_style = "sphinx"
+
+[tool.isort]
+py_version = 3
+profile = 'black'
+known_first_party = ['travelagent','tests']
+skip_gitignore = true
+
+[tool.sphinx]
+package_dir = "travelagent"
+name = "travelagent"
+
+[tool.licensecheck]
+using = "requirements:requirements/requirements.txt"
+ignore_packages = [
+    # [AO] NVIDIA packages are released under "NVIDIA Proprietary License" that is unknown to licensecheck but that is
+    # compatible with commercial use (https://www.nvidia.com/en-us/drivers/nvidia-license/)
+    'nvidia-cublas-cu11', 'nvidia-cuda-cupti-cu11', 'nvidia-cuda-nvrtc-cu11', 'nvidia-cuda-runtime-cu11', 'nvidia-cudnn-cu11',
+    'nvidia-cufft-cu11', 'nvidia-curand-cu11', 'nvidia-cusolver-cu11', 'nvidia-cusparse-cu11', 'nvidia-nccl-cu11', 'nvidia-nvtx-cu11',
+    'nvidia-cublas-cu12', 'nvidia-cuda-cupti-cu12', 'nvidia-cuda-nvrtc-cu12', 'nvidia-cuda-runtime-cu12', 'nvidia-cudnn-cu12',
+    'nvidia-cufft-cu12', 'nvidia-curand-cu12', 'nvidia-cusolver-cu12', 'nvidia-cusparse-cu12', 'nvidia-nccl-cu12', 'nvidia-nvjitlink-cu12', 'nvidia-nvtx-cu12']
+zero = true
+
+[tool.bandit]
+targets = ["travelagent"]
+exclude_dirs = ['venv']
+
+[tool.mypy]
+packages = [ "travelagent", "tests" ]
+namespace_packages = true
+follow_imports = "silent"
+disallow_untyped_defs = true
+disallow_incomplete_defs = true
+disallow_any_generics = true
+warn_redundant_casts = true
+strict_equality = true
+
+[[tool.mypy.overrides]]
+module = ["pandas.*", "cfg_load.*", "google.*", "vertexai.*", "sentence_transformers.*"]
+ignore_missing_imports = true
