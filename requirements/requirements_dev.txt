@@ -78,7 +78,7 @@ fastapi-utils==0.2.1
     #   microservices-hexagonal
 fhconfparser==2023
     # via licensecheck
-filelock==3.13.1
+filelock==3.13.2
     # via virtualenv
 flake8==7.0.0
     # via
@@ -188,9 +188,9 @@ mccabe==0.7.0
     # via flake8
 mdurl==0.1.2
     # via markdown-it-py
-microservices-core @ git+https://bitbucket.org/3rdplace/microservice-core@v0.0.1
+microservices-core @ git+https://bitbucket.org/3rdplace/microservice-core@v0.1.0
     # via microservices-hexagonal
-microservices-hexagonal @ git+https://bitbucket.org/3rdplace/microservice-hexagonal@v0.1.1
+microservices-hexagonal @ git+https://bitbucket.org/3rdplace/microservice-hexagonal@v0.1.2
     # via travelagent (pyproject.toml)
 mistune==0.8.4
     # via m2r2
@@ -253,6 +253,8 @@ protobuf==4.25.3
     #   googleapis-common-protos
     #   grpcio-status
     #   proto-plus
+psutil==5.9.8
+    # via microservices-core
 py4ai-core==1.0.2
     # via
     #   aramix-application-commons

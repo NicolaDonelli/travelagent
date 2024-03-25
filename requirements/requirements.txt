@@ -122,11 +122,11 @@ idna==3.6
     #   -c requirements/requirements_dev.txt
     #   anyio
     #   requests
-microservices-core @ git+https://bitbucket.org/3rdplace/microservice-core@v0.0.1
+microservices-core @ git+https://bitbucket.org/3rdplace/microservice-core@v0.1.0
     # via
     #   -c requirements/requirements_dev.txt
     #   microservices-hexagonal
-microservices-hexagonal @ git+https://bitbucket.org/3rdplace/microservice-hexagonal@v0.1.1
+microservices-hexagonal @ git+https://bitbucket.org/3rdplace/microservice-hexagonal@v0.1.2
     # via
     #   -c requirements/requirements_dev.txt
     #   -r subset.in
@@ -162,6 +162,10 @@ protobuf==4.25.3
     #   googleapis-common-protos
     #   grpcio-status
     #   proto-plus
+psutil==5.9.8
+    # via
+    #   -c requirements/requirements_dev.txt
+    #   microservices-core
 py4ai-core==1.0.2
     # via
     #   -c requirements/requirements_dev.txt
