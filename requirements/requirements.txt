@@ -8,10 +8,18 @@ anyio==4.3.0
     # via
     #   -c requirements/requirements_dev.txt
     #   starlette
+aramix-application-commons @ git+https://bitbucket.org/3rdplace/aramix-application-commons@v0.0.3
+    # via
+    #   -c requirements/requirements_dev.txt
+    #   -r subset.in
 aramix-security-commons @ git+https://bitbucket.org/3rdplace/aramix-security-commons@v0.0.1
     # via
     #   -c requirements/requirements_dev.txt
     #   hexagonal-core
+cachetools==5.3.3
+    # via
+    #   -c requirements/requirements_dev.txt
+    #   google-auth
 certifi==2024.2.2
     # via
     #   -c requirements/requirements_dev.txt
@@ -47,6 +55,60 @@ fastapi-utils==0.2.1
     #   -c requirements/requirements_dev.txt
     #   microservices-core
     #   microservices-hexagonal
+google-api-core[grpc]==2.18.0
+    # via
+    #   -c requirements/requirements_dev.txt
+    #   google-cloud-bigquery
+    #   google-cloud-bigquery-storage
+    #   google-cloud-core
+    #   google-cloud-firestore
+google-auth==2.29.0
+    # via
+    #   -c requirements/requirements_dev.txt
+    #   aramix-application-commons
+    #   google-api-core
+    #   google-cloud-bigquery
+    #   google-cloud-core
+google-cloud-bigquery==3.19.0
+    # via
+    #   -c requirements/requirements_dev.txt
+    #   aramix-application-commons
+google-cloud-bigquery-storage==2.24.0
+    # via
+    #   -c requirements/requirements_dev.txt
+    #   aramix-application-commons
+google-cloud-core==2.4.1
+    # via
+    #   -c requirements/requirements_dev.txt
+    #   aramix-application-commons
+    #   google-cloud-bigquery
+    #   google-cloud-firestore
+google-cloud-firestore==2.15.0
+    # via
+    #   -c requirements/requirements_dev.txt
+    #   aramix-application-commons
+google-crc32c==1.5.0
+    # via
+    #   -c requirements/requirements_dev.txt
+    #   google-resumable-media
+google-resumable-media==2.7.0
+    # via
+    #   -c requirements/requirements_dev.txt
+    #   google-cloud-bigquery
+googleapis-common-protos==1.63.0
+    # via
+    #   -c requirements/requirements_dev.txt
+    #   google-api-core
+    #   grpcio-status
+grpcio==1.62.1
+    # via
+    #   -c requirements/requirements_dev.txt
+    #   google-api-core
+    #   grpcio-status
+grpcio-status==1.62.1
+    # via
+    #   -c requirements/requirements_dev.txt
+    #   google-api-core
 h11==0.14.0
     # via
     #   -c requirements/requirements_dev.txt
@@ -77,20 +139,50 @@ numpy==1.26.4
     #   -c requirements/requirements_dev.txt
     #   pandas
     #   scipy
+packaging==24.0
+    # via
+    #   -c requirements/requirements_dev.txt
+    #   google-cloud-bigquery
 pandas==2.2.1
     # via
     #   -c requirements/requirements_dev.txt
     #   py4ai-core
+proto-plus==1.23.0
+    # via
+    #   -c requirements/requirements_dev.txt
+    #   google-api-core
+    #   google-cloud-bigquery-storage
+    #   google-cloud-firestore
+protobuf==4.25.3
+    # via
+    #   -c requirements/requirements_dev.txt
+    #   google-api-core
+    #   google-cloud-bigquery-storage
+    #   google-cloud-firestore
+    #   googleapis-common-protos
+    #   grpcio-status
+    #   proto-plus
 py4ai-core==1.0.2
     # via
     #   -c requirements/requirements_dev.txt
+    #   aramix-application-commons
     #   aramix-security-commons
     #   hexagonal-core
     #   microservices-core
     #   microservices-hexagonal
+pyasn1==0.5.1
+    # via
+    #   -c requirements/requirements_dev.txt
+    #   pyasn1-modules
+    #   rsa
+pyasn1-modules==0.3.0
+    # via
+    #   -c requirements/requirements_dev.txt
+    #   google-auth
 pydantic==1.10.14
     # via
     #   -c requirements/requirements_dev.txt
+    #   aramix-application-commons
     #   aramix-security-commons
     #   fastapi
     #   fastapi-utils
@@ -100,6 +192,7 @@ pydantic==1.10.14
 python-dateutil==2.9.0.post0
     # via
     #   -c requirements/requirements_dev.txt
+    #   google-cloud-bigquery
     #   pandas
 pytz==2024.1
     # via
@@ -115,6 +208,12 @@ requests==2.31.0
     # via
     #   -c requirements/requirements_dev.txt
     #   cfg-load
+    #   google-api-core
+    #   google-cloud-bigquery
+rsa==4.9
+    # via
+    #   -c requirements/requirements_dev.txt
+    #   google-auth
 scipy==1.12.0
     # via
     #   -c requirements/requirements_dev.txt
@@ -139,6 +238,7 @@ starlette==0.36.3
 tomli==2.0.1
     # via
     #   -c requirements/requirements_dev.txt
+    #   aramix-application-commons
     #   aramix-security-commons
     #   hexagonal-core
     #   microservices-core
@@ -148,6 +248,7 @@ typing-extensions==4.10.0
     # via
     #   -c requirements/requirements_dev.txt
     #   anyio
+    #   aramix-application-commons
     #   aramix-security-commons
     #   fastapi
     #   hexagonal-core
