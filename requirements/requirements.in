@@ -1,2 +1,4 @@
 microservices-hexagonal @ git+https://bitbucket.org/3rdplace/microservice-hexagonal@v0.1.2
 aramix-application-commons @ git+https://bitbucket.org/3rdplace/aramix-application-commons@v0.0.3
+langchain>=0.1.13
+langchain-google-genai>=0.0.11
